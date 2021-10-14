@@ -10,7 +10,7 @@ import 'package:platform_device_id/platform_device_id.dart';
 import 'package:workmanager/workmanager.dart';
 
 const myTask = "getCurrentLocation";
- 
+
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputdata) async {  
     switch (task) {
