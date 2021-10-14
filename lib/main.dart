@@ -12,7 +12,7 @@ import 'package:workmanager/workmanager.dart';
 const myTask = "getCurrentLocation";
  
 void callbackDispatcher() {
-  Workmanager().executeTask((task, inputdata) async {
+  Workmanager().executeTask((task, inputdata) async {  
     switch (task) {
       case myTask:
         print("this method was called from native!");
