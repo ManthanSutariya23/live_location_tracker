@@ -217,54 +217,10 @@ class _MyHomePageState extends State<MyHomePage> {
             : Center(
               child: Text("Welcome "+name)
             ),
-          // a
-          // ? Expanded(
-          //   child: ListView.builder(
-          //     itemCount: datalist.length,
-          //     itemBuilder: (BuildContext context, int index) {
-          //       getuserid(datalist[index]['deviceid']);
-          //       return Container(
-          //         child: Column(
-          //           children: [
-          //             ListTile(
-          //               title: Text(datalist[index]['name']),
-          //               subtitle: Row(
-          //                 children: [
-          //                   Text(datalist[index]['lat'].toString()),
-          //                   SizedBox(width: 10,),
-          //                   Text(datalist[index]['longi'].toString()),
-          //                 ],
-          //               ),
-          //               trailing: IconButton(
-          //                 onPressed: (){
-          //                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => Showmap(id: idd,deviceid: datalist[index]['deviceid'],),));
-          //                 }, 
-          //                 icon: Icon(Icons.directions),
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // )
-          // : const CircularProgressIndicator()
         ],
       ),
        
     );
-  }
-
-  Future<void> getuserid(did) async{
-    await profilelist.where('deviceid',isEqualTo: did.toString()).get().then((querysnapshot) {
-      querysnapshot.docs.forEach((element) {
-        setState(() {
-          print('user id : ------ ${element.id}');
-          idd = element.id;
-          userdeviceid = element['deviceid'];
-        });
-      });
-    });
   }
 
   Future<void> enablelocation() async {
@@ -279,7 +235,6 @@ class _MyHomePageState extends State<MyHomePage> {
         'lat' : currentlocation.latitude,
         'longi' : currentlocation.longitude
       });
-      // print("current location : ${currentlocation.latitude}  ---  ${currentlocation.longitude}");
       datalist.clear();
       getdata();  
     });
@@ -371,44 +326,6 @@ class _AdminState extends State<Admin> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 30,),
-              // name=="" || name == null
-              // ? Column(
-              //   children: [
-              //     Container(
-              //       padding: const EdgeInsets.all(20),
-              //       child: TextField(
-              //         focusNode: txtbox,
-              //         decoration: const InputDecoration(
-              //           hintText: 'Enter Your Name',
-              //           border: OutlineInputBorder()
-              //         ),
-              //         controller: edit,
-              //       ),
-              //     ),
-              //     ElevatedButton(
-              //       onPressed: () async {
-              //         profilelist.add({
-              //           'name' : edit.text,
-              //           'deviceid' : _deviceId,
-              //           'lat' : getlocation.latitude,
-              //           'longi' : getlocation.longitude
-              //         });
-              //         edit.text = "";
-              //         datalist.clear();
-              //         txtbox.unfocus();
-              //         getdata();
-              //         enablelocation();
-              //         setState(() {
-              //           name = " ";
-              //         });
-              //       }, 
-              //       child: Text('Save'),
-              //     ),
-              //   ],
-              // )
-              // : Center(
-              //   child: Text("Welcome "+name)
-              // ),
             a
             ? Expanded(
               child: ListView.builder(

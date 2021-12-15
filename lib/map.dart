@@ -27,9 +27,7 @@ class _ShowmapState extends State<Showmap> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('id : ----- ${widget.id}  --- ${widget.deviceid}');
     getlocation();
-
   }
 
   getlocation() {
@@ -42,13 +40,9 @@ class _ShowmapState extends State<Showmap> {
       profilelist.where('deviceid',isEqualTo: widget.deviceid.toString()).get().then((querysnapshot) {
         querysnapshot.docs.forEach((element) {
           setState(() {
-            // data.clear();
-            // data.add(element);
-            print("lattitude ${element['lat']} ----- longitude : ${element['longi']}");
             lat = element['lat'];
             long = element['longi'];
             a=true;
-
           });
         });
       });
@@ -60,7 +54,7 @@ class _ShowmapState extends State<Showmap> {
     return Scaffold(
       body: 
       a 
-      ?GoogleMap(
+      ? GoogleMap(
         mapType: MapType.hybrid,
         markers: {
           Marker(
@@ -71,7 +65,7 @@ class _ShowmapState extends State<Showmap> {
         },
         initialCameraPosition: CameraPosition(target: LatLng(lat,long),zoom: 18),
       )
-      : Center(child: const CircularProgressIndicator()),
+      : const Center(child: CircularProgressIndicator()),
     );
   }
 }
